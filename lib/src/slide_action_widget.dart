@@ -41,6 +41,7 @@ class SlideAction extends StatefulWidget {
     this.disabledColorTint = Colors.white54,
     this.thumbHitTestBehavior = HitTestBehavior.opaque,
     this.thumbDragStartBehavior = DragStartBehavior.down,
+    this.holdOnAction = false,
     Key? key,
   })  : assert(
           trackHeight > 0 && trackHeight.isFinite && !trackHeight.isNaN,
@@ -94,6 +95,9 @@ class SlideAction extends StatefulWidget {
 
   /// The animation curve to use when snapping the thumb to a resting position
   final Curve snapAnimationCurve;
+
+  /// Hold the position of the thumb slider when an action is performed
+  final bool holdOnAction;
 
   /// Enable right to left
   final bool rightToLeft;
@@ -324,7 +328,10 @@ class _SlideActionState extends State<SlideAction>
         setState(() {
           _performingAction = false;
         });
-        _animateThumbToStart();
+
+        if (widget.holdOnAction) {
+          _animateThumbToStart();
+        }
       }
     }).catchError((err) {
       _detachAnimationListener();
