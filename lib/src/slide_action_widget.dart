@@ -329,7 +329,7 @@ class _SlideActionState extends State<SlideAction>
           _performingAction = false;
         });
 
-        if (widget.holdOnAction) {
+        if (! widget.holdOnAction) {
           _animateThumbToStart();
         }
       }
