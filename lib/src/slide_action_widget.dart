@@ -26,6 +26,7 @@ typedef SlideActionWidgetBuilder = Widget Function(
 /// Using the [SlideActionStateMixin] which is provided in the builders
 /// for both, any kind of widget can be created that react to user interactions.
 class SlideAction extends StatefulWidget {
+
   /// Create a new [SlideAction] widget
   SlideAction({
     required this.trackBuilder,
